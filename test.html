@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Тест</title>
+
+    <style>
+        @keyframes titleMove {
+            0% { letter-spacing: 1px; }
+            50% { letter-spacing: 5px; }
+            100% { letter-spacing: 1px; }
+        }
+
+        h1 {
+            animation: titleMove 3s infinite;
+        }
+
+        button {
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body bgcolor="#fff4f7">
+
+    <center>
+        <h1>Тест по персонажам</h1>
+
+        <hr>
+
+        <p>
+            <a href="index.html">Главная</a> |
+            <a href="characters.html">Персонажи</a> |
+            <a href="plot.html">Сюжет</a> |
+            <a href="test.html">Тест</a>
+        </p>
+
+        <hr>
+    </center>
+
+    <h2>Ответь на 5 вопросов</h2>
+
+    <form id="quiz">
+
+        <p><b>1. Кто из героинь больше всего любит порядок и идеальность?</b></p>
+        <input type="radio" name="q1" value="0"> Сьюзан<br>
+        <input type="radio" name="q1" value="1"> Бри<br>
+        <input type="radio" name="q1" value="0"> Габриэль<br>
+
+        <p><b>2. Кто часто попадает в неловкие и смешные ситуации?</b></p>
+        <input type="radio" name="q2" value="1"> Сьюзан<br>
+        <input type="radio" name="q2" value="0"> Линетт<br>
+        <input type="radio" name="q2" value="0"> Бри<br>
+
+        <p><b>3. Какая героиня любит роскошь и красивую жизнь?</b></p>
+        <input type="radio" name="q3" value="0"> Линетт<br>
+        <input type="radio" name="q3" value="1"> Габриэль<br>
+        <input type="radio" name="q3" value="0"> Сьюзан<br>
+
+        <p><b>4. Кто является сильной, умной и практичной матерью?</b></p>
+        <input type="radio" name="q4" value="0"> Бри<br>
+        <input type="radio" name="q4" value="0"> Габриэль<br>
+        <input type="radio" name="q4" value="1"> Линетт<br>
+
+        <p><b>5. Что объединяет главных героинь?</b></p>
+        <input type="radio" name="q5" value="1"> Они живут на одной улице и дружат<br>
+        <input type="radio" name="q5" value="0"> Они работают в одной школе<br>
+        <input type="radio" name="q5" value="0"> Они не знакомы друг с другом<br>
+
+        <br>
+
+        <button type="button" onclick="checkQuiz()">Проверить ответы</button>
+    </form>
+
+    <h2 id="result"></h2>
+
+    <script>
+        function checkQuiz() {
+            var score = 0;
+
+            for (var i = 1; i <= 5; i++) {
+                var answers = document.getElementsByName("q" + i);
+
+                for (var j = 0; j < answers.length; j++) {
+                    if (answers[j].checked) {
+                        score = score + Number(answers[j].value);
+                    }
+                }
+            }
+
+            var result = document.getElementById("result");
+
+            if (score == 5) {
+                result.innerHTML = "Отлично! Ты хорошо знаешь персонажей. Результат: 5 из 5.";
+            } else if (score >= 3) {
+                result.innerHTML = "Хорошо! Но можно повторить персонажей. Результат: " + score + " из 5.";
+            } else {
+                result.innerHTML = "Попробуй ещё раз. Результат: " + score + " из 5.";
+            }
+        }
+    </script>
+
+    <hr>
+
+    <center>
+        <p>Спасибо за прохождение теста!</p>
+    </center>
+
+</body>
+</html>
